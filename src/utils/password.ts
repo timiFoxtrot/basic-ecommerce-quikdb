@@ -1,0 +1,16 @@
+import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+export const hashPassword = async (password: string): Promise<string> => {
+  console.log("rounds", process.env.SALT_ROUNDS!);
+  return bcrypt.hash(password, 10);
+};
+
+export const comparePassword = async (
+  password: string,
+  hashedPassword: string
+): Promise<boolean> => {
+  return bcrypt.compare(password, hashedPassword);
+};
