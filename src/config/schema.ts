@@ -9,10 +9,10 @@ import {
   ResultBool,
   Schema,
 } from "quikdb-cli-beta/v1/sdk";
-import { quikdb } from "..";
 import { generateRandomId } from "../utils";
 import { hashPassword } from "../utils/password";
 import { ROLES } from "./constants/enum";
+import { quikdb } from "./database";
 
 class Model {
   async getSchema(schemaName: string) {

@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const hashPassword = async (password: string): Promise<string> => {
-  console.log("rounds", process.env.SALT_ROUNDS!);
   return bcrypt.hash(password, 10);
 };
 

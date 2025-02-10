@@ -1,0 +1,14 @@
+Running dfx start for version 0.24.3
+Using the default configuration for the local shared network.
+Initialized replica.
+Initialized HTTP gateway.
+Replica API running on 127.0.0.1:4943
+Success! The dfx server is running in the background.
+Feb 09 11:57:15.443 INFO Caught SIGTERM
+Feb 09 11:57:15.453 INFO Caught SIGTERM
+Stopping canister http adapter...
+Stopped.
+Stopping the replica...
+Stopped.
+Stopping HTTP gateway...
+Stopped.

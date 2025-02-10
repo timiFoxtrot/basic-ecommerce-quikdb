@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { findUserByEmail, findUserById } from "../services/auth";
 import { ROLES } from "../config/constants/enum";
+import { UserRepository } from "../repositories/auth.repository";
 
 export const authenticate = ({ isAdmin }: { isAdmin: boolean }) => {
   return async (
@@ -34,7 +34,7 @@ export const authenticate = ({ isAdmin }: { isAdmin: boolean }) => {
         id: string;
       };
 
-      const user = await findUserById(decoded.id);
+      const user = await new UserRepository().findUserById(decoded.id);
 
       if (!user) {
         return res
