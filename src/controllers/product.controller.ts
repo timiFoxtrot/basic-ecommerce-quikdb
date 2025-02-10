@@ -52,7 +52,14 @@ export class ProductCOntroller {
     next: NextFunction
   ): Promise<any> => {
     try {
-      const data = await this.productService.getApprovedProducts();
+      const { page, page_size } = req.query as {
+        page: string;
+        page_size: string;
+      };
+      const data = await this.productService.getApprovedProducts(
+        page,
+        page_size
+      );
       return res.status(200).json({
         status: "success",
         message: "Products fetched successfully",

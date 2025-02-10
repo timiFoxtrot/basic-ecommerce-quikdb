@@ -1,6 +1,7 @@
 import { STATUS } from "../config/constants/enum";
 import { generateRandomId } from "../utils";
 import { ProductRepository } from "../repositories/product.repository";
+import { paginate } from "../utils/paginate";
 
 // Create Schema Result: { err: 'You can define up to 2 indexes only.' }
 // Error: You can define up to 2 indexes only.
@@ -28,12 +29,14 @@ export class ProductService {
     return this.productRepository.findByUserId(userId);
   }
 
-  async getApprovedProducts() {
+  async getApprovedProducts(page: string, page_size: string) {
+    const pageNumber = parseInt(page) || 1
+    const pageSizeNumber = parseInt(page_size) || 5
     const data = await this.productRepository.findByIndex(
       "status",
       STATUS.APPROVED
     );
-    return data;
+    return paginate(data, pageNumber, pageSizeNumber);
   }
 
   async approveProduct(productId: string) {
