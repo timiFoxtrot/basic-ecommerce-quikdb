@@ -9,7 +9,7 @@ describe("Integration Test: Product Module", () => {
   describe("[POST] /createProduct", () => {
     it("should create a product.", async () => {
       const productData = {
-        name: "test product3",
+        name: "test product",
         description: "my test product",
         price: "300",
       };
@@ -112,7 +112,7 @@ describe("Integration Test: Product Module", () => {
       const response = await request(BASE_URL).get("/products/approved");
       expect(response.status).toBe(200);
       expect(response.body.status).toEqual("success");
-      expect(Array.isArray(response.body.data)).toBe(true);
+      expect(Array.isArray(response.body.data.data)).toBe(true);
     }, 10000);
   });
   describe("[PATCH] /updateOwnProduct", () => {

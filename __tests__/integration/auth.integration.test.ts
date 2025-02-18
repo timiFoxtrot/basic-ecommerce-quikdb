@@ -6,24 +6,24 @@ dotenv.config();
 const BASE_URL = "http://localhost:3040/api";
 
 describe("Integration Test: Auth Module", () => {
-  // describe("[POST] /signupUser", () => {
-  //   it("should sign up a user.", async () => {
-  //     const userData = {
-  //       email: "test@example.com",
-  //       password: "password123",
-  //       username: "testuser",
-  //     };
+  describe("[POST] /signupUser", () => {
+    it("should sign up a user.", async () => {
+      const userData = {
+        email: "test@example.com",
+        password: "password123",
+        username: "testuser",
+      };
 
-  //     const response = await request(BASE_URL)
-  //       .post("/auth/signup")
-  //       .send(userData);
+      const response = await request(BASE_URL)
+        .post("/auth/signup")
+        .send(userData);
 
-  //     expect(response.body).toMatchObject({
-  //       status: "success",
-  //       message: "User inserted successfully.",
-  //     });
-  //   }, 10000);
-  // });
+      expect(response.body).toMatchObject({
+        status: "success",
+        message: "User inserted successfully.",
+      });
+    }, 10000);
+  });
   describe("[POST] /signinUser", () => {
     it("should sign in a user", async () => {
       const credentials = {
