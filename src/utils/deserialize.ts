@@ -3,7 +3,7 @@ type Raw = {
   fields: [string, string][];
 };
 
-export const serialize = (input: Raw) => {
+export const deserialize = (input: Raw) => {
   let serializedObject: Record<string, any> = {};
   serializedObject["id"] = input.id;
   for (let field of input.fields) {

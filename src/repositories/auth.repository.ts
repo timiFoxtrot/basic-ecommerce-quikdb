@@ -8,7 +8,7 @@ import {
 } from "quikdb-cli-beta/v1/sdk";
 import { quikdb } from "../config/database";
 import { ROLES, SCHEMA } from "../config/constants/enum";
-import { parseRecordString, serialize } from "../utils/serialize";
+import { parseRecordString, deserialize } from "../utils/deserialize";
 
 export class UserRepository {
   async createUser(params: Record<string, any>): Promise<any> {
@@ -46,7 +46,7 @@ export class UserRepository {
     );
     if (allRecords.ok) {
       const data = allRecords.ok.map((record: any) => {
-        const serializedObject = serialize(record);
+        const serializedObject = deserialize(record);
         delete serializedObject.password;
         return serializedObject;
       });
@@ -64,7 +64,7 @@ export class UserRepository {
       searchByIndexArgs
     );
     if (searchResult.ok) {
-      return searchResult.ok.map((record: any) => serialize(record))[0];
+      return searchResult.ok.map((record: any) => deserialize(record))[0];
     } else {
       console.error(`Error: ${searchResult.err}`);
       return false;

@@ -11,7 +11,7 @@ import {
 } from "quikdb-cli-beta/v1/sdk";
 import { SCHEMA } from "../config/constants/enum";
 import { quikdb } from "../config/database";
-import { parseRecordString, serialize } from "../utils/serialize";
+import { parseRecordString, deserialize } from "../utils/deserialize";
 
 export class ProductRepository {
   async createProduct(params: Record<string, any>) {
@@ -65,7 +65,7 @@ export class ProductRepository {
     );
     if (searchMultipleResult.ok.length) {
       const data = searchMultipleResult.ok.map((record: any) =>
-        serialize(record)
+        deserialize(record)
       );
       return data;
     } else {
@@ -82,7 +82,7 @@ export class ProductRepository {
       searchByIndexArgs
     );
     if (searchResult.ok?.length) {
-      const data = searchResult.ok.map((record: any) => serialize(record));
+      const data = searchResult.ok.map((record: any) => deserialize(record));
       return data;
     } else {
       console.error(`Error: ${searchResult.err}`);
@@ -114,7 +114,7 @@ export class ProductRepository {
       getAllRecordsArgs
     );
     if (allRecords.ok) {
-      const data = allRecords.ok.map((record: any) => serialize(record));
+      const data = allRecords.ok.map((record: any) => deserialize(record));
       return data;
     } else {
       console.error(`Error==: ${allRecords.err}`);
