@@ -145,7 +145,6 @@ describe("Integration Test: Product Module", () => {
       });
     }, 10000);
   });
-
   describe("[DELETE] /deleteOwnProduct", () => {
     it("should delete own product", async () => {
       const credentials = {

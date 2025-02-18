@@ -63,7 +63,7 @@ export class ProductRepository {
       CanisterMethod.SearchByMultipleFields,
       searchByMultipleFieldsArgs
     );
-    if (searchMultipleResult.ok.length) {
+    if (searchMultipleResult?.ok?.length) {
       const data = searchMultipleResult.ok.map((record: any) =>
         deserialize(record)
       );
