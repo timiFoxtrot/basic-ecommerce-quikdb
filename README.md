@@ -15,7 +15,7 @@ The objective of this project is to build a basic e-commerce application that en
 
    ```bash
    git clone <repository-url>
-   cd quikdb-final
+   cd basic-ecommerce-quikdb
    ```
 
 2. **Install Dependencies:**
